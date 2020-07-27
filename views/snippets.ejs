@@ -1,0 +1,18 @@
+<%- include("partials/header") -%> 
+
+<div class="card-columns mt-5">
+
+    <% snippets.forEach(snippet => {%>
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= snippet.title %> </h5>
+              <p class="card-text mb-4"><%= snippet.description %> </p>
+              <a href="/delete/<%=active.name%>/<%=snippet._id%>" class="btn btn-outline-danger btn-sm float-left mb-2">Delete</a>
+              <a href="/<%=active.name%>/snippets/<%=snippet._id%>" class="btn btn-outline-primary btn-sm float-right mb-2">Open</a>
+            </div>
+        </div>
+        
+    <% }); %> 
+</div>
+
+<%- include("partials/footer") -%>

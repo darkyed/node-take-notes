@@ -1,0 +1,80 @@
+
+        </main>
+    </div>
+</div>
+
+
+
+
+
+<!-- Language Modal -->
+<div class="modal fade" id="langModal" tabindex="-1" role="dialog" aria-labelledby="langModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="langModalLabel">Add Language</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/addlang" method="post" id="langForm">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Language Name</label>
+              <input type="text" class="form-control" id="recipient-name" name="langName" maxlength="15" autocomplete="off" required>
+              <small id="langHelpBlock" class="form-text text-muted">
+                Should be Alpha-numeric, and must not contain any special characters or emojis
+              </small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" form="langForm" name="submit" value="<%= active._id %>">Save</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Add Snippet Modal -->
+<div class="modal fade" id="snippetModal" tabindex="-1" role="dialog" aria-labelledby="snippetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="snippetModalLabel">New Snippet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/<%= active.name %>" method="post" id="snippetForm">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Title</label>
+              <input type="text" class="form-control" id="recipient-name" name="enteredTitle" autocomplete="off" required>
+              <small id="titleHelpBlock" class="form-text text-muted">
+                i.e. Conditional Statements
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Description</label>
+              <textarea class="form-control" id="message-text" name="enteredDescription"></textarea>
+              <small id="descHelpBlock" class="form-text text-muted">
+                i.e. Brilliant use of if, elif and else statement
+              </small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" form="snippetForm" name="submit" value="<%= active._id %>">Save</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
