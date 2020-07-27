@@ -94,7 +94,7 @@ app.get('/:langName?', function (req,res) {
                             if (passedLang.snippets === undefined || passedLang.snippets.length == 0){
                                 path = "empty";
                             }
-                            res.render(path, {langs:languages, active: lang[0], snippets:passedLang.snippets});
+                            res.render(path, {langs:languages, active: lang[0], snippets:passedLang.snippets, tagline:'You have not added any snippets here'});
                         }
                         
                     }
@@ -166,6 +166,35 @@ app.get('/delete/:langName/:snippetId', function (req,res) {
         }
      });
      
+ });
+
+app.post('/search/:langName', function (req,res) { 
+    let lang = req.params.langName;
+    let path = 'snippets';
+    let userText = _.trim(req.body.inputText).toLowerCase();
+    Language.findOne({name:lang}, function (err,data) { 
+        if(!err){
+            let searchResults = [];
+            data.snippets.forEach(snippet => {
+                const snipTitle = snippet.title.toLowerCase();
+                const isPresent = snipTitle.includes(userText);
+                if (isPresent) {
+                    searchResults.push(snippet);
+                }
+            });
+            if(searchResults.length===0){
+                path = 'empty';
+            }
+            Language.find({},function (err,alllangs) { 
+                if(!err){
+                    res.render(path, {langs:alllangs, active: {name:lang}, snippets:searchResults, tagline:'No snippets by that name'});
+                }
+             });
+            
+        } else{
+            console.log(err);
+        }
+     });
  });
 
 app.listen(3000, function () { 
